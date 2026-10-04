@@ -19,19 +19,11 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1)   # on Render, the real visitor IP comes from the proxy header
 limiter = Limiter(get_remote_address, app=app, storage_uri="memory://")
 
-
 @app.errorhandler(Exception)
 def handle_error(e):
     if isinstance(e, HTTPException):
         if e.code == 429:
             return jsonify({"reply": "You're sending messages too fast. Please wait a moment and try again."}), 429
-        return e
-    app.logger.exception(e)
-    return jsonify({"reply": "Something went wrong on my end. Please try again in a moment."}), 500
-
-@app.errorhandler(Exception)
-def handle_error(e):
-    if isinstance(e, HTTPException):
         return e
     app.logger.exception(e)
     return jsonify({"reply": "Something went wrong on my end. Please try again in a moment."}), 500
