@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Otaku Assistant · オタクアシスタント</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='6' y='6' width='88' height='88' rx='18' fill='%23e8505b'/%3E%3Crect x='16' y='16' width='68' height='68' rx='11' fill='none' stroke='white' stroke-opacity='.45' stroke-width='3'/%3E%3Ctext x='50' y='68' font-size='54' font-weight='700' text-anchor='middle' fill='white' font-family='serif'%3E%E3%82%AA%3C/text%3E%3C/svg%3E">  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="moon"></div>
+  <div class="petals" id="petals"></div>
+  <svg class="scene" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="fuji" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8f7bd6"/>
+      <stop offset="1" stop-color="#3a2a73"/>
+    </linearGradient>
+    <linearGradient id="far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5a3f8f"/>
+      <stop offset="1" stop-color="#2a1d52"/>
+    </linearGradient>
+  </defs>
+  <!-- distant hills -->
+  <path d="M0 300 L0 215 C140 185 240 228 380 200 C520 172 600 220 760 205 C920 190 1020 150 1160 185 C1280 214 1360 190 1440 205 L1440 300 Z" fill="url(#far)" opacity=".7"/>
+  <!-- Mt. Fuji -->
+  <path d="M330 300 L560 105 Q580 90 600 105 L830 300 Z" fill="url(#fuji)"/>
+  <path d="M528 140 L560 105 Q580 90 600 105 L632 140 L612 131 L592 150 L574 130 L552 148 Z" fill="#ffd9e2" opacity=".9"/>
+  <!-- torii gate -->
+  <g fill="#e8505b" opacity=".85">
+    <rect x="1118" y="198" width="14" height="102"/>
+    <rect x="1228" y="198" width="14" height="102"/>
+    <rect x="1130" y="224" width="100" height="9"/>
+    <path d="M1096 198 Q1180 214 1264 198 L1268 183 Q1180 199 1092 183 Z"/>
+  </g>
+  <!-- foreground ground -->
+  <path d="M0 300 L0 268 C300 244 600 284 900 262 C1100 248 1300 274 1440 258 L1440 300 Z" fill="#07050f"/>
+</svg>
+  <div class="vertical">アニメ · マンガ · 物語</div>
+
+  <main class="app">
+    <header class="chat-header">
+      <div class="brand">
+        <span class="seal">オ</span>
+        <div>
+          <h1>Otaku Assistant</h1>
+          <p>オタクアシスタント</p>
+        </div>
+      </div>
+      <button id="new-chat-btn" class="ghost-btn">New chat</button>
+    </header>
+
+    <section id="chat-window" class="chat-window"></section>
+
+    <div class="composer">
+      <input type="text" id="user-input" placeholder="Ask about an anime, a character, or a vibe..." autocomplete="off" />
+      <button id="send-btn" aria-label="Send">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <p class="hint">Spoilers are blurred. Tap to reveal.</p>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>

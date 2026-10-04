@@ -1,0 +1,10 @@
+.env
+anilist_cache.json
+__pycache__/
+*.pyc
+venv/
+.venv/
+check_char.py
+check_tag.py
+eval_similar.py
+data/
